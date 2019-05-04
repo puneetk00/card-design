@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700,800|Roboto:300,400,700');
+
+@font-face {
+  font-family: 'Cadillac';
+  src: url('../fonts/cadillacserif-regular.eot');
+  src: url('../fonts/cadillacserif-regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/cadillacserif-regular.woff2') format('woff2'),
+       url('../fonts/cadillacserif-regular.woff') format('woff'),
+       url('../fonts/cadillacserif-regular.ttf')  format('truetype'),
+       url('../fonts/cadillacserif-regular.svg#svgFontName') format('svg');
+} 
+@font-face {
+  font-family: 'Calibri Bold';
+  src: url('../fonts/Calibri-Bold.eot');
+  src: url('../fonts/Calibri-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/Calibri-Bold.woff2') format('woff2'),
+       url('../fonts/Calibri-Bold.woff') format('woff'),
+       url('../fonts/Calibri-Bold.ttf')  format('truetype'),
+       url('../fonts/Calibri-Bold.svg#svgFontName') format('svg');
+} 
+@font-face {
+  font-family: 'MinionPro Bold';
+  src: url('../fonts/MinionPro-Bold.eot');
+  src: url('../fonts/MinionPro-Bold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/MinionPro-Bold.woff2') format('woff2'),
+       url('../fonts/MinionPro-Bold.woff') format('woff'),
+       url('../fonts/MinionPro-Bold.ttf')  format('truetype'),
+       url('../fonts/MinionPro-Bold.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'MinionPro Regular';
+  src: url('../fonts/MinionPro-Regular.eot');
+  src: url('../fonts/MinionPro-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/MinionPro-Regular.woff2') format('woff2'),
+       url('../fonts/MinionPro-Regular.woff') format('woff'),
+       url('../fonts/MinionPro-Regular.ttf')  format('truetype'),
+       url('../fonts/MinionPro-Regular.svg#svgFontName') format('svg');
+}
+
+@font-face {
+  font-family: 'MyriadPro Regular';
+  src: url('../fonts/MyriadPro-Regular.eot');
+  src: url('../fonts/MyriadPro-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/MyriadPro-Regular.woff2') format('woff2'),
+       url('../fonts/MyriadPro-Regular.woff') format('woff'),
+       url('../fonts/MyriadPro-Regular.ttf')  format('truetype'),
+       url('../fonts/MyriadPro-Regular.svg#svgFontName') format('svg');
+} 

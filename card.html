@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Card Design Tool</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/card-style.css">
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/jquery.colorpicker.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+</head>
+
+<body>
+
+    <section class="card-design-wrapper for-admin-use">
+        <div class="container">
+            <div class="card-main-option">
+                <div class="card-heading">
+                    <h1>Business cards - standard matte - Front Side</h1>
+                </div>
+                <div class="card-main-control">
+                    <div class="card-main-control-left">
+                        <ul id="left-control">
+                            <li class="active">
+                                <a class="text-edit" href="javascript: void(0)">Text</a>
+                            </li>
+                            <li>
+                                <a class="image-edit" href="javascript: void(0)">Image</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-main-control-right">
+                        <ul id="right-control">
+                            <li>
+                                <a class="undo-action" href="javascript: void(0)" id="undo">Undo</a>
+                            </li>
+                            <li>
+                                <a class="redo-action" href="javascript: void(0)" id="redo">Redo</a>
+                            </li>
+                            <li>
+                                <a class="save-design" href="javascript: void(0)">Save</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- <button type="button" id="undo">Undo</button>
+                <button type="button" id="redo" disabled>Redo</button> -->
+            </div>
+            <div class="card-editing-area-wrapper">
+                <div class="card-editing-area-wrapper-left">
+                    <div class="card-editing-tabs" id="text-edit" style="display: block;">
+                        <h2>Enter Your Text</h2>
+                        <input type="text" value="Enter Your Text" id="updateValue" hidden>
+                        <div class="add-new-fields" id="front-view-text">
+                            <a href="javascript: void(0)" class="add-more-field" id="front-add-field">Add new text
+                                field</a>
+                            <textarea class="inputs-ctrl">First Name</textarea>
+                            <textarea class="inputs-ctrl">Last Name</textarea>
+                            <textarea class="inputs-ctrl">Job Title</textarea>
+                            <textarea class="inputs-ctrl">Phone / Other</textarea>
+                        </div>
+                        <div class="add-new-fields" id="back-view-text">
+                            <a href="javascript: void(0)" class="add-more-field" id="back-add-field">Add new text
+                                field</a>
+                        </div>
+                    </div>
+                    <div class="card-editing-tabs" id="image-edit">
+                        <!-- <div class="card-background-image">
+                            <input type="file" class="custom-file-input canvas-bg-image" id="file2">
+                            <span class="card-image-text">Background Image</span>
+                        </div> -->
+                        <div class="card-logo-image">
+                            <input type="file" class="custom-file-input canvas-logo-image" id="file">
+                            <span class="card-image-text">My Computer</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-editing-area-wrapper-right">
+                    <div class="canvas-wrapper" id="front-view">
+                        <canvas id="front"></canvas>
+                    </div>
+                    <div class="canvas-wrapper" id="back-view" style="display: none;">
+                        <canvas id="back"></canvas>
+                    </div>
+                    <div class="canvas-editing-options ui-widget-content" id="textEditOptions">
+                        <div class="canvas-editing-options-top">
+                            <div class="top-slide-container" id="font-family">
+                                <ul id="font-family-list"></ul>
+                            </div>
+                            <div class="top-slide-container" id="font-size">
+                                <label for="">Font Size</label>
+                                <input type="text" value="20" class="fontSizeInputVal">
+                                <input type="range" min="20" max="100" value="20" class="fontSizeRangeVal slider">
+                            </div>
+                            <div class="top-slide-container" id="text-color">
+                                <input type="text" id="colorpicker-full" class="color-pick" value="000000">
+                            </div>
+                            <div class="top-slide-container" id="text-shadow">
+                                <input type="text" id="colorpicker-shadow" class="color-pick" value="ff0000">
+                                <div class="shadow-control">
+                                    <label for="">Blur:<input type="range" min="-10" max="10" value="1"
+                                            class="blur-shadow slider"></label>
+                                    <label for="">offsetX:<input type="range" min="-10" max="10" value="-4"
+                                            class="offsetX-shadow slider"></label>
+                                    <label for="">offsetY:<input type="range" min="-10" max="10" value="3"
+                                            class="offsetY-shadow slider"></label>
+                                </div>
+                            </div>
+                            <div class="top-slide-container" id="text-outline">
+                                <input type="text" id="colorpicker-outline" class="color-pick" value="ff0000">
+                                <input type="range" min="0" max="5" value="1" class="text-outline-slider slider">
+                            </div>
+                            <div class="top-slide-container" id="line-height">
+                                <label for="">Line Height</label>
+                                <input type="text" value="1.16" class="lineHeightInputVal">
+                                <input type="range" min="1" max="2" value="1.16" step="0.03"
+                                    class="lineHeightRangeVal slider">
+                            </div>
+                            <div class="top-slide-container" id="letter-spacing">
+                                <label for="">Letter Spacing</label>
+                                <input type="text" value="1.16" class="letterSpacingInputVal">
+                                <input type="range" min="0" max="400" value="0" step="5"
+                                    class="letterSpacingRangeVal slider">
+                            </div>
+                            <div class="more-slide">
+                                <ul>
+                                    <li>
+                                        <a title="Font Family" href="javascript: void(0)" class="font-family">Arial</a>
+                                    </li>
+                                    <li>
+                                        <a title="Font Size" href="javascript: void(0)" class="font-size">20</a>
+                                    </li>
+                                    <li>
+                                        <a title="Line Height" href="javascript: void(0)" class="line-height">1.16</a>
+                                    </li>
+                                    <li>
+                                        <a title="Letter Spacing" href="javascript: void(0)"
+                                            class="letter-spacing">0</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0)" class="text-color">Color</a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0)" class="slide-for-more">More <i
+                                                class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0)" class="slide-for-less">
+                                            <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Bold" href="javascript: void(0)" class="bold-font">
+                                            <i class="fa fa-bold"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Underline" href="javascript: void(0)" class="underline-font"><i
+                                                class="fa fa-underline"></i></a>
+                                    </li>
+                                    <li>
+                                        <a title="Italic" href="javascript: void(0)" class="italic-font">
+                                            <i class="fa fa-italic"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Delete" href="javascript: void(0)" class="delete-object">
+                                            <i class="fa fa-trash"></i></a>
+                                    </li>
+                                    <li>
+                                        <a title="Align Left" href="javascript: void(0)" class="align-left">
+                                            <i class="fa fa-align-left"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Align Center" href="javascript: void(0)" class="align-center">
+                                            <i class="fa fa-align-center"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Align Right" href="javascript: void(0)" class="align-right">
+                                            <i class="fa fa-align-right"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Dublicate" href="javascript: void(0)" class="dublicate-copy">
+                                            <i class="fa fa-copy"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Arrange" href="javascript: void(0)" class="arrange-object">
+                                            <i class="fa fa-layer-group"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Rotate" href="javascript: void(0)" class="rotate-object">
+                                            <i class="fa fa-repeat"></i>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a title="Text Shadow" href="javascript: void(0)" class="text-shadow">A</a>
+                                    </li>
+                                    <li>
+                                        <a title="Text Outline" href="javascript: void(0)" class="text-outline"><img
+                                                src="images/text-outline.png" alt=""></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="canvas-editing-options-bottom">
+                            <textarea class="inputVal">Enter Text Here</textarea>
+                        </div>
+                    </div>
+                    <div class="canvas-editing-options ui-widget-content" id="imageEditOptions">
+                        <div class="top-slide-container" id="replace-object">
+                            <div class="card-logo-image">
+                                <input type="file" class="custom-file-input canvas-logo-image" id="fileReplace">
+                                <span class="card-image-text">My Computer</span>
+                            </div>
+                        </div>
+                        <div class="top-slide-container" id="text-color-image">
+                            <div class="color-filter">
+                                <label for="">Color</label>
+                                <input type="range" class="image-filter-color slider">
+                                <a href="javascript: void(0)" class="reset-image-filter-color">Reset</a>
+                            </div>
+                            <div class="color-filter">
+                                <label for="">Saturation</label>
+                                <input type="range" class="image-filter-saturation slider" value="0.1" min="0" max="1"
+                                    step="0.003921">
+                                <a href="javascript: void(0)" class="reset-image-filter-saturation">Reset</a>
+                            </div>
+                            <div class="color-filter">
+                                <label for="">Lightness</label>
+                                <input type="range" class="slider image-filter-lightness" value="0.1" min="-1" max="1"
+                                    step="0.003921">
+                                <a href="javascript: void(0)" class="reset-image-filter-lightness">Reset</a>
+                            </div>
+                        </div>
+
+                        <div class="top-slide-container" id="arrange-object">
+                            <div class="bring-front col-arrange">
+                                <a href="javascript: void(0)" class="b2f">Bring to Front</a>
+                                <a href="javascript: void(0)" class="bf">Bring Forward</a>
+                            </div>
+                            <div class="bring-back col-arrange">
+                                <a href="javascript: void(0)" class="s2b">Send to Back</a>
+                                <a href="javascript: void(0)" class="sb">Send Backward</a>
+                            </div>
+                        </div>
+
+                        <div class="canvas-editing-options-top">
+                            <div class="more-slide">
+                                <ul>
+                                    <li>
+                                        <a href="javascript: void(0)" class="love-move-object lock">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                            <i class="fa fa-arrows" aria-hidden="true"></i>
+                                            <span class="moreslide-text lock">Lock</span>
+                                            <span class="moreslide-text move">Move / Resize</span>
+                                        </a>
+                                        <a href="javascript: void(0)" class="love-move-object unlock">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                            <i class="fa fa-arrows" aria-hidden="true"></i>
+                                            <span class="moreslide-text lock">Lock</span>
+                                            <span class="moreslide-text move">Move / Resize</span>
+                                        </a>
+                                    </li>
+                                    <!-- <li>
+                                        <a href="javascript: void(0)" class="crop-object">
+                                            <i class="fa fa-crop" aria-hidden="true"></i><span
+                                                class="moreslide-text">Crop</span>
+                                        </a>
+                                    </li> -->
+                                    <li>
+                                        <a href="javascript: void(0)" class="rotate-object">
+                                            <i class="fa fa-repeat"></i><span class="moreslide-text">Rotate</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0)" class="replace-object">
+                                            <span class="replace-image-icon">
+                                                <img src="images/swap-default-1x.png" alt="">
+                                            </span>
+                                            <span class="moreslide-text">Replace</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0)" class="text-color-image">Color<span
+                                                class="moreslide-text">Color</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0)" class="dublicate-copy-image"><i
+                                                class="fa fa-copy"></i>
+                                            <span class="moreslide-text">Duplicate</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0)" class="arrange-object">
+                                            <i class="fa fa-layer-group"></i>
+                                            <span class="moreslide-text">Arrange</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript: void(0)" class="delete-object">
+                                            <i class="fa fa-trash"></i><span class="moreslide-text">Delete</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="canvas-preview">
+                        <div class="card-preview-image">
+                            <!-- <img src="images/card-preview.png" alt=""> -->
+                            <div class="card-front instant-preview active">
+                                <div class="card-front-output"></div>
+                                <span class="front-back-text">Front Side</span>
+                            </div>
+                            <div class="card-back instant-preview">
+                                <div class="card-back-output"></div>
+                                <span class="front-back-text">Back Side</span>
+                            </div>
+                        </div>
+                        <a href="javascript: void(0)" class="preview-card"><img src="images/preview.png" alt="">
+                            Preview</a>
+                    </div>
+                    <div class="save-btn-wrapper">
+                        <a href="javascript: void(0)" class="save-btn save-for-user">Save</a>
+                    </div>
+                </div>
+                <div class="card-preview-display" style="display: none;">
+                    <header class="card-preview-header">
+                        <h2>Review Your</h2>
+                        <a href="javascript: void(0)" class="close-card-preview">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                    </header>
+                    <div class="card-preview-body">
+                        <div class="card-preview-front">
+                            <img id="front-preview-img" />
+                        </div>
+                        <div class="card-preview-back">
+                            <img id="back-preview-img" />
+                        </div>
+                    </div>
+                    <footer class="card-preview-footer">
+                        <a href="#">Review & Purchange</a>
+                        <a href="#" class="edit-front-canvas">Edit Front Side</a>
+                        <a href="#" class="edit-back-canvas">Edit Back Side</a>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="card-design-wrapper for-user-use">
+        <div class="container">
+            <div class="user-card-editing-area">
+                <a href="javascript: void(0)" class="export-admin-user">Export Admit To User</a>
+                <div class="user-front-card-wrapper">
+                    <h2 style="font-size: 22px;margin-bottom: 30px;font-weight: bold;">Front Side For User</h2>
+                    <div class="user-front-card">
+                        <canvas id="user-front"></canvas>
+                    </div>
+                    <div class="front-inputs-ctrl"></div>
+                </div>
+                <div class="user-back-card-wrapper">
+                    <h2 style="font-size: 22px;margin-bottom: 30px;font-weight: bold;">Back Side For User</h2>
+                    <div class="user-back-card">
+                        <canvas id="user-back"></canvas>
+                    </div>
+                    <div class="back-inputs-ctrl"></div>
+                </div>
+            </div>
+            <a href="javascript: void(0)" class="final-output">Final Out Put</a>
+        </div>
+    </section>
+
+
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/2.4.6/fabric.min.js" type="text/javascript"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.20/fabric.min.js"></script> -->
+    <script src="http://rawgit.com/bramstein/fontfaceobserver/master/fontfaceobserver.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        var filters = ['grayscale', 'invert', 'remove-color', 'sepia', 'brownie',
+            'brightness', 'contrast', 'saturation', 'noise', 'vintage',
+            'pixelate', 'blur', 'sharpen', 'emboss', 'technicolor',
+            'polaroid', 'blend-color', 'gamma', 'kodachrome',
+            'blackwhite', 'blend-image', 'hue', 'resize'];
+
+        var canvas, canvasBack, canvasUser, canvasUserBack;
+        var mxWidth = 596;
+        var mxHeight = 343;
+        $(".canvas-editing-options").draggable();
+        let front = $('#front-view').css('display');
+
+        $(function () {
+            $('#colorpicker-shadow, #colorpicker-outline, #colorpicker-full').colorpicker({
+                parts: 'full',
+                alpha: true,
+                showOn: 'both',
+                buttonColorize: true,
+                showNoneButton: true
+            });
+        });
+
+    </script>
+    <script src="js/main.js" type="text/javascript"></script>
+    <script src="js/main-back.js" type="text/javascript"></script>
+    <script src="js/image.js" type="text/javascript"></script>
+    <script src="js/text.js" type="text/javascript"></script>
+    <script src="js/save.js" type="text/javascript"></script>
+    <script src="js/customiseControls.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/font.js"></script>
+    <script type="text/javascript" src="js/jquery.colorpicker.js"></script>
+    <script type="text/javascript" src="js/undo-redu.js"></script>
+    <script src="js/centering_guidelines.js"></script>
+    <script src="js/aligning_guidelines.js"></script>
+    <script src="js/user-card.js"></script>
+</body>
+
+</html>
