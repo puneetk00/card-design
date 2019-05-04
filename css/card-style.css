@@ -6,8 +6,8 @@ a:focus {outline: none;}
 .card-heading h1 {font-size: 24px;font-weight: 700;margin: 0;line-height: 30px;}
 .card-main-control {background: #f5f5f5; border: 1px solid #e4e4e4; border-radius: 50px;display: flex;    margin-top: 32px;}
 .card-main-control ul {margin: 0; padding: 0;}
-.card-main-control ul li {display: inline-block; vertical-align: top;margin-left: -3px;}
-.card-main-control ul li a {display: block;height: 53px;line-height: 53px;border-right: 1px solid #dbdbdb;font-size: 14px;text-transform: uppercase;text-decoration: none;color: #000;font-weight: 600; position: relative;}
+.card-main-control ul li {display: inline-block; vertical-align: top;}
+.card-main-control ul li a {display: block; padding-right: 10px; height: 53px;line-height: 53px;border-right: 1px solid #dbdbdb;font-size: 14px;text-transform: uppercase;text-decoration: none;color: #000;font-weight: 600; position: relative;}
 .card-main-control ul li a:hover, .card-main-control ul li.active a {color: #e57826;}
 .card-main-control ul li a:hover::after, .card-main-control ul li.active a::after {content: ''; border-bottom: 2px solid #e57826; position: absolute; bottom: 0;width: 100%; left: 0;}
 .card-main-control ul li:last-child a {border-right: none;}
@@ -26,12 +26,12 @@ a.redo-action:hover::before, li.active a.redo-action::before {background: url(..
 a.save-design {width: 120px;text-align: center;}
 a.save-design::before {content: '';background: url(../images/save.png) no-repeat center right;width: 27px;height: 28px;display: inline-block;position: relative;top: 8px;margin-right: 12px;}  
 a.save-design:hover::before, li.active a.save-design::before {background: url(../images/save-hover.png) no-repeat center right;}
-.card-main-control-left {width: 50%;padding-left: 18px;}
+.card-main-control-left {width: 50%;padding-left: 40px;}
 .card-main-control-right {width: 50%; text-align: right;padding-right: 18px;}
 .card-main-control-right ul li:first-child a {border-left: 1px solid #dbdbdb;}
 .card-editing-area-wrapper {display: flex; margin-top: 60px;}
-.card-editing-area-wrapper-left {width: 35%;}
-.card-editing-area-wrapper-right {width: 65%; position: relative;}
+.card-editing-area-wrapper-left {width: 45%; float: left;}
+.card-editing-area-wrapper-right {width: 55%; position: relative; float: left;}
 .card-editing-area-wrapper-left h2 {font-size: 20px;color: #000;font-weight: 600;margin: 0 0 30px;}
 .add-new-fields a.add-more-field {display: block;height: 47px;line-height: 47px;text-align: center;text-decoration: none;border: 1px solid #ffb5a5;color: #e57826;font-weight: 600;border-radius: 2px;margin-bottom: 20px;}
 .add-new-fields .inputs-ctrl {display: block;width: 100%;height: 47px; border: 1px solid #cbcbcb;  padding:10px 13px 0 13px; margin-bottom:20px; border-radius: 2px;box-shadow: inset 0 0 15px -10px rgba(0, 0, 0, 0.5); color: #5a5a5a; font-size: 13px;max-height: 47px; resize: none;overflow: hidden;}
@@ -41,12 +41,12 @@ a.save-design:hover::before, li.active a.save-design::before {background: url(..
 .add-new-fields input.inputs-ctrl:-moz-placeholder {color: #5a5a5a; opacity: 0.5;}
 .canvas-wrapper {width: 626px; height: 373px; box-shadow: 0 0 15px -10px rgba(0, 0, 0, 0.5);float: right; padding: 15px;}
 .canvas-wrapper canvas {width: 100%;height: 100%;border: 1px dashed #000;}
-.canvas-preview {float: right;max-width: 626px;width: 100%;margin-top: 20px;margin-bottom: 40px;padding-bottom: 40px;border-bottom: 1px solid #d4d4d4;}
+.canvas-preview {float: right;max-width: 626px;width: 100%;margin-top: 40px;margin-bottom: 40px;padding-bottom: 40px;border-bottom: 1px solid #d4d4d4;}
 .card-preview-image {display: inline-block;vertical-align: middle;}
 a.preview-card {float: right;width: 130px;height: 47px;line-height: 47px;text-align: center; color: #000; text-decoration: none; font-weight: 600; border: 1px solid #f3b88c; border-radius: 4px;    margin-top: 28px;}
 a.preview-card img {vertical-align: text-top;}
-.save-btn-wrapper {float: right;max-width: 100%; width: 626px; margin-bottom: 70px;}
-a.save-btn {width: 180px;height: 48px;line-height: 48px;text-align: center;display: block;  background: #e57827;color: #fff;text-decoration: none;border-radius: 4px; font-weight: 600; font-size: 16px;}
+/* .save-btn-wrapper {float: right;max-width: 100%; width: 626px; margin-bottom: 70px;}
+a.save-btn {width: 180px;height: 48px;line-height: 48px;text-align: center;display: block;  background: #e57827;color: #fff;text-decoration: none;border-radius: 4px; font-weight: 600; font-size: 16px;} */
 .canvas-editing-options {display: none;width: 524px;background: #fff; box-shadow: 0 0 15px -10px rgba(0, 0, 0, 0.5); z-index: 999;border: 1px solid #d8d8d8; border-radius: 5px; position: absolute;top: 0;left: 0;}
 .canvas-editing-options-bottom {padding: 11px;}
 .canvas-editing-options-bottom .inputVal {display: block; height: 37px; width: 100%; border: 1px solid #c2c2c2;border-radius: 2px; padding: 10px 15px;font-size: 14px;color: #000; max-height: 37px;resize: none;overflow: hidden;}
@@ -72,7 +72,7 @@ a.slide-for-less {display: block;width: 100%;height: 100%;}
 .slider::-webkit-slider-thumb {-webkit-appearance: none;appearance: none;width: 25px;height: 25px;  background: #e57826; cursor: pointer; border-radius: 100%;}
 .slider::-moz-range-thumb {width: 25px;height: 25px;background: #e57826; cursor: pointer;border-radius: 100%;}
 .top-slide-container .fontSizeInputVal, .top-slide-container .lineHeightInputVal, .top-slide-container .letterSpacingInputVal {font-size: 13px;padding: 5px 10px;border-radius: 2px;    border: 1px solid #c2c2c2;margin-right: 15px; width: 50px;text-align: center;}
-.top-slide-container option {display: inline-block;width: 30%;font-size: 15px; margin-bottom: 5px;    cursor: pointer;}
+.top-slide-container option {display: inline-block;width: 33%;font-size: 13px; margin-bottom: 5px;    cursor: pointer;}
 div#font-family {max-height: 100px; overflow-x: hidden; overflow-y: auto;}
 .more-slide ul li a.arrange-object {background-image: url(../images/arrange-default.png); background-repeat: no-repeat; background-position: center center; width: 37px !important;}
 .more-slide ul li a.arrange-object:hover {background-image: url(../images/arrange-hover.png);}
@@ -146,5 +146,286 @@ footer.card-preview-footer {padding: 25px 15px; text-align: right;}
 .user-front-card, .user-back-card {width: 626px;height: 373px;box-shadow: 0 0 15px -10px rgba(0, 0, 0, 0.5); padding: 15px; margin-bottom: 50px;display: inline-block;}
 .user-front-card canvas, .user-back-card canvas{width: 100%; height: 100%; border: 1px dashed #000;}
 .export-admin-user, .final-output  {display: block;width: 200px; height: 48px; line-height: 48px; text-align: center;  text-decoration: none;background: #e57827;color: #fff; border-radius: 4px; font-size: 17px;  margin-bottom: 35px;}
-.front-inputs-ctrl, .back-inputs-ctrl {display: inline-block;vertical-align: top;width: 40%;padding-left: 30px;padding-top: 25px;}
-.user-card-editing-area textarea.inputs-ctrl-user {display: block; width: 100%; height: 47px; border: 1px solid #cbcbcb; padding: 10px 13px 0 13px;margin-bottom: 20px;border-radius: 2px; box-shadow: inset 0 0 15px -10px rgba(0, 0, 0, 0.5);color: #5a5a5a; font-size: 13px; max-height: 47px; resize: none;    overflow: hidden; max-width: 250px;}
+/* .front-inputs-ctrl, .back-inputs-ctrl {display: inline-block;vertical-align: top;width: 40%;padding-left: 30px;padding-top: 25px;} */
+/* .user-card-editing-area textarea.inputs-ctrl-user {display: block; width: 100%; height: 47px; border: 1px solid #cbcbcb; padding: 10px 13px 0 13px;margin-bottom: 20px;border-radius: 2px; box-shadow: inset 0 0 15px -10px rgba(0, 0, 0, 0.5);color: #5a5a5a; font-size: 13px; max-height: 47px; resize: none;    overflow: hidden; max-width: 250px;} */
+.inputs-ctrl.highlight{border: 1px solid #ec0505;}
+
+
+/* background image upload css */
+
+.card-background-image::before {
+    content: "\f093";
+    display: block;
+    border: 1px solid #999;
+    border-radius: 3px;
+    color: #000;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-size: 30px;
+    font-family: FontAwesome;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    height: 100%;
+    padding-top: 30px;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+.card-background-image {
+    height: 100px;
+    position: relative;
+    width: 100px;
+}
+.top_scale{
+    background: url('../images/scale1.jpg') no-repeat center center;
+    background-size: contain;
+    height: 16px;
+    max-width: 100%;
+
+}
+.left_scale{
+    background: url('../images/scale2.jpg') no-repeat;
+    background-size: contain;
+    height: 392px;
+    max-height: 100%;
+    max-width: 17px;
+    /* transform: rotate(90deg); */
+    position: absolute;
+    left: 0;
+    top: 15px;
+    bottom: 0;
+    width: 100%;
+
+}
+.canvas-wrapper{position: relative;}
+
+
+.checkbox_wrapper{
+    position: relative;
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    top: 15px;
+    margin-left: 7px;
+    cursor: pointer;
+}
+
+.checkbox_wrapper input[type="checkbox"] {
+    opacity:0;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: pointer;
+}
+
+.checkbox_wrapper input[type="checkbox"] + label{
+    background:url('../images/radio.png') no-repeat;
+    width: 15px;
+    height: 15px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.checkbox_wrapper input[type="checkbox"]:checked + label{
+    background:url('../images/radio_tick.png') no-repeat;
+    width: 15px;
+    height: 15px;
+    display:inline-block;
+    padding: 0 0 0 0px;
+    cursor: pointer;
+}
+.form_group textarea{
+    /* width: 90;
+    max-width: 90%; */
+    display: inline-block !important;
+}
+.add-new-fields a.add-more-field{
+    width: 85%;
+}
+.form_group{
+    display: flex;
+    width: 95%;
+}
+.form_group .text_field{
+    display: inline-block;
+    width: 95%;
+}
+.remove_btn .cstm_btn{
+    outline: none;
+    border: 0;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #e57827;
+    color: #fff;
+    display: block;
+    width: 200px;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    text-decoration: none;
+    background: #e57827;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 17px;
+    margin-bottom: 35px;
+}
+.checkbox_wrapper a{
+    position: absolute;
+    right: -8px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #252222;
+    margin-top: -11px;
+    cursor: pointer;
+}
+.canvas_preview_export{
+        float: left;
+        max-width: 626px;
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #d4d4d4;
+}
+.clearfix{
+    clear: both;
+    overflow: hidden;
+
+}
+.final_out_btn{
+    float: left;
+    width: 100%;
+}
+.card-front-exprt, .card-back-exprt {
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    margin-right: 35px;
+    cursor: pointer;
+}
+#export_back{
+    display: none;
+}
+.card-back-output.activeClass,.card-front-output.activeClass{
+    border: 1px solid #e57827;
+}
+
+.add_more_button{
+    display: block;
+    width: 100%;
+    height: 58px;
+    margin-right: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+.add_more_button.activeClass, .card-front-output.activeClass {
+    border: 1px solid #e57827;
+}
+.card-back_more  {
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    margin-right: 35px;
+    cursor: pointer;
+}
+.required_error{display: none;}
+.canvas-container{background: #fff;}
+.export_section{float: left;}
+.front-inputs-ctrl,.back-inputs-ctrl{float: right;padding-top: 50px;}
+/* background image css ends */
+
+
+/* back card tabs css */
+.backPannel .backCardContent {
+    min-height: 535px;
+    max-width: 245px;
+    border: none;
+    padding-bottom: 7px;
+    margin: 0 16px;
+}
+.backView{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    margin: 0px;
+    background: #fcfcfd;
+    overflow-y: scroll;
+    height: 500px;
+    border-radius: 5px;
+}
+.backView .backViewItem{
+    text-align: center;
+    margin: 10px 10px 19px;
+    padding: 10px;
+    border: solid 1px transparent;
+    height: 100px;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 5px; */
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0px 4px 8px #cecece;
+}
+.backViewItem{
+    text-align: center;
+    margin: 10px 10px 19px;
+    padding: 10px;
+    border: solid 1px transparent;
+    height: 100px;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 5px; */
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0px 4px 8px #cecece;
+}
+.backView .backViewItem .item-content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.backViewItem .item-content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+#enableBack{ display: none;}
+.save-btn-wrapper {max-width: 100%; margin-bottom: 70px;float: left;}
+a.save-back-btn {width: 180px;height: 48px;line-height: 48px; margin-right: 20px;text-align: center; display: block;background: #e57827;color: #fff;text-decoration: none;border-radius: 4px;font-weight: 600;font-size: 16px;}
+a.save-btn {width: 180px;height: 48px;line-height: 48px;margin-right: 20px;text-align: center;display: block;  background: #e57827;color: #fff;text-decoration: none;border-radius: 4px; font-weight: 600; font-size: 16px;}
+
+.front-inputs-ctrl, .back-inputs-ctrl {display: inline-block;vertical-align: top;width: 100%;padding-left: 30px;padding-top: 25px;}
+
+.user-card-editing-area textarea.inputs-ctrl-user {display: block; width: 100%; height: 47px; border: 1px solid #cbcbcb; padding: 10px 13px 0 13px;margin-bottom: 20px;border-radius: 2px; box-shadow: inset 0 0 15px -10px rgba(0, 0, 0, 0.5);color: #5a5a5a; font-size: 13px; max-height: 47px; resize: none;    overflow: hidden; max-width: 90%;}
+#export_front,#export_back{float: left;width: 45%;min-width: 45%;min-height: 200px;}
+.export_section{float: left;width: 55%;}
+.front-inputs-ctrl, .back-inputs-ctrl{margin-top: 115px;}
+.export_admin_btn{width:55%;float: right;}
+.backViewItem{
+    background-image: linear-gradient(to right,#5b247a,#e57827);
+    color: #fff;
+}
+.backView::-webkit-scrollbar-track{-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);background-color: #f5f5f5;}
+.backView::-webkit-scrollbar{width: 2px;background-color: #e57827;}
+.backView::-webkit-scrollbar-thumb{background-color: #e57827;border: 2px solid #e57827; width: 5px; height: 5px}
+.backView::-webkit-scrollbar-thumb:vertical{width:5px; height: 5px;}
+.backView .backViewItem:first-child{
+    margin-top: 0px;
+}
+.backView .backViewItem:last-child{
+    margin-bottom: 0px;
+}
+/* back card tabs css ends*/

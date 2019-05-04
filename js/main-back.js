@@ -119,6 +119,7 @@ $(function () {
         console.log('cleared');
         $('.more-slide ul').animate({ right: '0' });
         $('.canvas-editing-options').hide();
+        $('.top-slide-container').hide();
     });
     canvasBack.observe('selection:updated', function (e) {
         console.log('updated');

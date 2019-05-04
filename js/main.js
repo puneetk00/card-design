@@ -122,6 +122,7 @@ $(function () {
         console.log('cleared');
         $('.more-slide ul').animate({ right: '0' });
         $('.canvas-editing-options').hide();
+        $('.top-slide-container').hide();
     });
     canvas.observe('selection:updated', function (e) {
         console.log('updated');
@@ -233,18 +234,20 @@ $(function () {
     // });
 
     $('.instant-preview').on('click', function () {
+        $("div#back-view-text.add-new-fields").find('.form_group').empty();
+        canvasBack.clear();
         $('.instant-preview').removeClass('active');
         $(this).addClass('active');
     });
 
     $('.card-front').on('click', function () {
         $('#front-view, #front-view-text').css('display', 'block');
-        $('#back-view, #back-view-text').css('display', 'none');
+        $('#back-view,#back-view-one, #back-view-text').css('display', 'none');
     });
 
     $('.card-back').on('click', function () {
         $('#back-view, #back-view-text').css('display', 'block');
-        $('#front-view, #front-view-text').css('display', 'none');
+        $('#front-view,#back-view-one, #front-view-text').css('display', 'none');
     });
     initCenteringGuidelines(canvas);
     initAligningGuidelines(canvas);
@@ -258,6 +261,9 @@ $(function () {
         $('#back-view, #back-view-text').css('display', 'block');
         $('#front-view, #front-view-text').css('display', 'none');
     });
+
+
+
 
     $('.save-btn').on('click', function () {
         // canvas._objects.set({
@@ -277,3 +283,146 @@ $(function () {
         // });
     });
 });
+
+
+// var textarea = $('.inputs-ctrl');
+// var select = $('.add-more-field');
+
+// var addOrRemoveRequiredAttribute = function () {
+//     if (textarea.val().length) {
+//         select.attr('required', true);
+//     }
+//     else {
+//         select.attr('required', false);
+//     }
+// };
+
+// Run now
+// addOrRemoveRequiredAttribute();
+
+// And when textarea changes
+// textarea.on('change', addOrRemoveRequiredAttribute);
+
+// $("#front-add-field").on('click', function(){
+//     var isFormValid = true;
+
+//     $(".inputs-ctrl").each(function(){
+//         if ($.trim($(this).val()).length == 0){
+//             $(this).addClass("highlight");
+//             isFormValid = false;
+//         }
+//         else{
+//             $(this).removeClass("highlight");
+//         }
+//     });
+
+//     if (!isFormValid) alert("Please fill in all the required fields (indicated by *)");
+
+//     return isFormValid;
+// });
+
+
+// $(document).ready(function () {
+//     $("#user_errors").hide();
+//     var user_err = true;
+
+//     $('.inputs-ctrl').keyup(function () {
+//         alert(user_val);
+//         form_validate();
+//     })
+
+//     function form_validate() {
+//         var user_val = $('.inputs-ctrl').val();
+
+//         if (user_val == "") {
+//             $("#user_errors").show();
+//             $("#user_errors").html("**please fill the required field");
+//             $("#user_errors").focus();
+//             $("#user_errors").css({
+//                 color: '#FF0000',
+//                 border: '1px solid #FF0000'
+//             })
+//             var user_err = false;
+//             return false;
+//         } else {
+//             $("#user_errors").hide();
+//         }
+
+
+//     }
+// })
+
+
+$('.card-back-output').on('click', function () {
+    var json = canvasBack.toJSON();
+    console.log(json);
+    canvasBack.clear();
+    canvasBack.loadFromJSON(json, canvas.renderAll.bind(canvasBack));
+    $('.card-back-output').removeClass('activeClass');
+    $('.card-front-output').removeClass('activeClass');
+    $(this).addClass('activeClass');
+    $('#enableBack').css('display', 'inline-block');
+    $('.backCardContent').css('display', 'block');
+
+});
+$('.card-front-output').on('click', function () {
+    $('.card-front-output').removeClass('activeClass');
+    $('.card-back-output').removeClass('activeClass');
+    $('#enableBack').css('display', 'none');
+    $('.backCardContent').css('display', 'none');
+    $(this).addClass('activeClass');
+});
+
+$('.card-front-exprt').on('click', function () {
+    $('#export_front,.front-view-text').css('display', 'block');
+    $('#export_back,.back-view-text').css('display', 'none');
+    $('#enableBack').css('display', 'none');
+
+    
+});
+$('.card-back-exprt').on('click', function () {
+    $('#export_front,.front-view-text').css('display', 'none');
+    $('#export_back,.back-view-text').css('display', 'block');
+    $('#enableBack').css('display', 'inline-block');
+
+    
+});
+
+
+$('.save-btn').on('click', function () {
+    // canvas._objects.set({
+    //     lockMovementX: false,
+    //     lockMovementY: false,
+    //     lockRotation: false,
+    //     lockScalingFlip: false,
+    //     lockScalingX: false,
+    //     lockScalingY: false,
+    //     lockSkewingX: false,
+    //     lockSkewingY: false,
+    //     lockUniScaling: false
+    // });
+    // canvas.renderAll();
+    // canvas.forEachObject(function (obj) {
+    //     console.log(obj);
+    // });
+
+  
+
+});
+
+initCenteringGuidelines(canvas);
+initAligningGuidelines(canvas);
+$('.edit-front-canvas').on('click', function () {
+    $('.close-card-preview, .card-front').click();
+    $('#front-view, #front-view-text').css('display', 'block');
+    $('#back-view, #back-view-text').css('display', 'none');
+    $('.backCardContent').css('display', 'none');
+});
+$('.edit-back-canvas').on('click', function () {
+    $('.close-card-preview, .card-back').click();
+    $('#back-view, #back-view-text').css('display', 'block');
+    $('#front-view, #front-view-text').css('display', 'inline-block');
+    $('.backCardContent').css('display', 'block');
+   
+});
+

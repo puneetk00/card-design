@@ -60,7 +60,47 @@ $(function () {
         };
         reader.readAsDataURL(file);
     });
-
+    // document.getElementById('background').addEventListener("change", function (e) {
+    //     var file = e.target.files[0];
+    //     var reader = new FileReader();
+    //     reader.onload = function (f) {
+    //         var data = f.target.result;
+    //         fabric.Image.fromURL(data, function (img) {
+    //             var oImg = img.set({
+    //                 left: 250,
+    //                 top: 100,
+    //                 angle: 0,
+    //                 shapeCanvas: 'image',
+    //                 crossOrigin: "anonymous",
+    //                 hasRotatingPoint: false
+    //             });
+    //             let front = $('#front-view').css('display');
+    //             if (front === 'block') {
+    //                 canvas.add(oImg);
+    //                 canvas.renderAll();
+    //                 $('#file').val('');
+    //                 canvas.setActiveObject(oImg);
+    //             } else {
+    //                 canvasBack.add(oImg);
+    //                 canvasBack.renderAll();
+    //                 $('#file').val('');
+    //                 canvasBack.setActiveObject(oImg);
+    //             }
+    //             /**Uploaded img data src */
+    //             var dataURL = canvas.toDataURL({
+    //                 format: 'png',
+    //                 quality: 1,
+    //                 crossOrigin: "anonymous"
+    //             });
+    //             var dataURLBack = canvasBack.toDataURL({
+    //                 format: 'png',
+    //                 quality: 1,
+    //                 crossOrigin: "anonymous"
+    //             });
+    //         });
+    //     };
+    //     reader.readAsDataURL(file);
+    // });
 
 
     /**Replace File */
@@ -100,31 +140,37 @@ $(function () {
         $('.top-slide-container').css('display', 'none');
     }
 
+    
 
 
 
 
-    // /**For Background Image**/
-    // document.getElementById('file2').addEventListener("change", function (e) {
-    //     var file = e.target.files[0];
-    //     var reader = new FileReader();
-    //     reader.onload = function (f) {
-    //         var data = f.target.result;
-    //         fabric.Image.fromURL(data, function (img) {
-    //             img.set({
-    //                 angle: 0,
-    //                 shapeCanvas: 'image',
-    //                 selection: true,
-    //                 hasRotatingPoint: false
-    //             });
-    //             canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
-    //                 scaleX: canvas.width / img.width,
-    //                 scaleY: canvas.height / img.height
-    //             });
-    //         });
-    //     };
-    //     reader.readAsDataURL(file);
-    // });
+    /**For Background Image**/
+    document.getElementById('file2').addEventListener("change", function (e) {
+        var file = e.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function (f) {
+            var data = f.target.result;
+            fabric.Image.fromURL(data, function (img) {
+                img.set({
+                    angle: 0,
+                    shapeCanvas: 'image',
+                    selection: true,
+                    hasRotatingPoint: false
+                });
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                    scaleX: canvas.width / img.width,
+                    scaleY: canvas.height / img.height
+                });
+                canvasBack.setBackgroundImage(img, canvasBack.renderAll.bind(canvasBack), {
+                    scaleX: canvasBack.width / img.width,
+                    scaleY: canvasBack.height / img.height
+                });
+            });
+        };
+        reader.readAsDataURL(file);
+    });
+    
 
     $('.love-move-object.lock').on('click', function () {
         let front = $('#front-view').css('display');
@@ -196,7 +242,7 @@ $(function () {
         let thisVal = $(this).val();
     });
 
-    $('.image-filter-lightness').on('input', function () {
+    $('.image-filter-lightness').on('change','input', function () {
         let thisVal = $(this).val();
         var object = canvas.getActiveObject();
         var filter = new fabric.Image.filters.Brightness({

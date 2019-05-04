@@ -1,5 +1,5 @@
 
-var fonts = ["Cadillac", "Open Sans", "Roboto", "Indie Flower", "Calibri Bold", "MinionPro Bold", "MinionPro Regular", "MyriadPro Regular"];
+var fonts = ["Cadillac", "Open Sans", "Roboto", "Indie Flower", "Calibri Bold", "MinionPro Bold", "MinionPro Regular", "MyriadPro Regular","MazdaType-Medium","MazdaType-MediumItalic","MazdaType-Regular","MazdaType-Italic","MazdaType-BoldItalic"];
 
 fonts.unshift('Arial');
 // Populate the fontFamily select

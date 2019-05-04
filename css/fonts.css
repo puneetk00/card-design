@@ -1,5 +1,69 @@
 @import url('https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans:400,600,700,800|Roboto:300,400,700');
 
+
+/* new fonts */
+
+@font-face {
+  font-family: 'MazdaType-BoldItalic';
+  src: url('../fonts/MazdaType-BoldItalic.eot');
+  src: url('../fonts/MazdaType-BoldItalic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/MazdaType-BoldItalic.svg#MazdaType-BoldItalic') format('svg'),
+       url('../fonts/MazdaType-BoldItalic.ttf') format('truetype'),
+       url('../fonts/MazdaType-BoldItalic.woff') format('woff'),
+       url('../fonts/MazdaType-BoldItalic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MazdaType-Italic';
+  src: url('../fonts/MazdaType-Italic.eot');
+  src: url('../fonts/MazdaType-Italic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/MazdaType-Italic.svg#MazdaType-Italic') format('svg'),
+       url('../fonts/MazdaType-Italic.ttf') format('truetype'),
+       url('../fonts/MazdaType-Italic.woff') format('woff'),
+       url('../fonts/MazdaType-Italic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MazdaType-Medium';
+  src: url('../fonts/MazdaType-Medium.eot');
+  src: url('../fonts/MazdaType-Medium.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/MazdaType-Medium.svg#MazdaType-Medium') format('svg'),
+       url('../fonts/MazdaType-Medium.ttf') format('truetype'),
+       url('../fonts/MazdaType-Medium.woff') format('woff'),
+       url('../fonts/MazdaType-Medium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MazdaType-MediumItalic';
+  src: url('../fonts/MazdaType-MediumItalic.eot');
+  src: url('../fonts/MazdaType-MediumItalic.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/MazdaType-MediumItalic.svg#MazdaType-MediumItalic') format('svg'),
+       url('../fonts/MazdaType-MediumItalic.ttf') format('truetype'),
+       url('../fonts/MazdaType-MediumItalic.woff') format('woff'),
+       url('../fonts/MazdaType-MediumItalic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MazdaType-Regular';
+  src: url('../fonts/MazdaType-Regular.eot');
+  src: url('../fonts/MazdaType-Regular.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/MazdaType-Regular.svg#MazdaType-Regular') format('svg'),
+       url('../fonts/MazdaType-Regular.ttf') format('truetype'),
+       url('../fonts/MazdaType-Regular.woff') format('woff'),
+       url('../fonts/MazdaType-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* new fonts ends */
+
 @font-face {
   font-family: 'Cadillac';
   src: url('../fonts/cadillacserif-regular.eot');

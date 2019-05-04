@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/card-style.css">
     <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/static_ruler.css">
     <link rel="stylesheet" href="css/jquery.colorpicker.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -27,6 +28,9 @@
                 <div class="card-main-control">
                     <div class="card-main-control-left">
                         <ul id="left-control">
+                            <li id="enableBack">
+                                <a class="image-edit-back" href="javascript: void(0)">Back design</a>
+                            </li>
                             <li class="active">
                                 <a class="text-edit" href="javascript: void(0)">Text</a>
                             </li>
@@ -60,34 +64,141 @@
                         <div class="add-new-fields" id="front-view-text">
                             <a href="javascript: void(0)" class="add-more-field" id="front-add-field">Add new text
                                 field</a>
-                            <textarea class="inputs-ctrl">First Name</textarea>
-                            <textarea class="inputs-ctrl">Last Name</textarea>
-                            <textarea class="inputs-ctrl">Job Title</textarea>
-                            <textarea class="inputs-ctrl">Phone / Other</textarea>
+                                  <!-- <textarea id="fname_id" class="inputs-ctrl" name="comment" required="required">First Name</textarea> -->
+                                <div class="form_group">
+                                    <div class="text_field">
+                                        <textarea id="fname_id" class="inputs-ctrl" name="comment" required="required">First Name</textarea>
+                                        <h5 id="fname_errors" class="user_errors" class="help-block"></h5>
+                                    </div>
+                                
+                                    <div class="checkbox_wrapper">
+                                        <input type="checkbox" name="form_validate_field" class="formcheckID" />
+                                        <label></label>
+                                        <a href="javascript: void(0)" class="remove"><img src="images/del.png" style="width:15px;height:20px;background-position: center center" /></a>
+                                    </div>
+                                 
+                                </div>
+                          
+                            <!-- <span class="required">please fill required field</span> -->
+                            <div class="form_group">
+                                <div class="text_field">
+                                    
+                                    <textarea id="lname_id" class="inputs-ctrl" name="comment" required="required">Last Name</textarea>
+                                    <h5 id="lname_errors" class="user_errors" class="help-block"></h5>
+                                </div>
+                                <div class="checkbox_wrapper">
+                                    <input type="checkbox" name="form_validate_field" class="formcheckID" />
+                                    <label></label>
+                                    <a href="javascript: void(0)" class="remove"><img src="images/del.png" style="width:15px;height:20px;background-position: center center" /></a>
+                                </div>
+                            </div>
+                            <div class="form_group">
+                                <div class="text_field">
+                                    <textarea id="jobtitle_id" class="inputs-ctrl" name="comment" required="required">Job Title</textarea>
+                                    <h5 id="jobtitle_errors" class="user_errors" class="help-block"></h5>
+                                </div>
+                                <div class="checkbox_wrapper">
+                                    <input type="checkbox" name="form_validate_field" class="formcheckID" />
+                                    <label></label>
+                                    <a href="javascript: void(0)" class="remove"><img src="images/del.png" style="width:15px;height:20px;background-position: center center" /></a>
+                                </div>
+                            </div>
+                            <div class="form_group">
+                                <div class="text_field">
+                                    <textarea id="phone_id" class="inputs-ctrl" name="comment" required="required">Phone / Other</textarea>
+                                    <h5 id="phone_error" class="user_errors" class="help-block"></h5>
+                                </div>
+                                <div class="checkbox_wrapper">
+                                    <input type="checkbox" name="form_validate_field" class="formcheckID" />
+                                    <label></label>
+                                    <a href="javascript: void(0)" class="remove"><img src="images/del.png" style="width:15px;height:20px;background-position: center center" /></a>
+                                </div>
+                            </div>
+                         
                         </div>
+                        <!-- <div class="remove_btn">
+                            <button type="button" class="btn btn-primary cstm_btn">Remove</button>
+                        </div> -->
                         <div class="add-new-fields" id="back-view-text">
                             <a href="javascript: void(0)" class="add-more-field" id="back-add-field">Add new text
                                 field</a>
                         </div>
                     </div>
                     <div class="card-editing-tabs" id="image-edit">
-                        <!-- <div class="card-background-image">
+                        <div class="card-background-image">
                             <input type="file" class="custom-file-input canvas-bg-image" id="file2">
-                            <span class="card-image-text">Background Image</span>
-                        </div> -->
+                            <span class="card-image-text">Upload Background Image</span>
+                        </div>
                         <div class="card-logo-image">
                             <input type="file" class="custom-file-input canvas-logo-image" id="file">
-                            <span class="card-image-text">My Computer</span>
+                            <span class="card-image-text">Upload Image</span>
+                        </div>
+                        <!-- <div class="card-logo-image">
+                            <input type="file" class="custom-file-input canvas-logo-image" id="background">
+                            <span class="card-image-text">Upload Background Image</span>
+                        </div> -->
+                    </div>
+                    <div class="card-editing-tabs" id="image-edit-back">
+                        <div class="backPannel">
+                            <div class="backCardContent">
+                                <div class="backView">
+                                    <!-- <div class="backViewItem" id="back_one">
+                                        <div class="item-content">
+                                            <p>Card 1</p>
+                                        </div>
+                                    </div>
+                                    <div class="backViewItem"  id="back_two">
+                                        <div class="item-content">
+                                            <p>Card 2</p>
+                                        </div>
+                                    </div>
+                                    <div class="backViewItem"  id="back_three">
+                                        <div class="item-content">
+                                            <p>Card 3</p>
+                                        </div>
+                                    </div>
+                                    <div class="backViewItem"  id="back_four">
+                                        <div class="item-content">
+                                            <p>Card 4</p>
+                                        </div>
+                                    </div>
+                                    <div class="backViewItem"  id="back_five">
+                                        <div class="item-content">
+                                            <p>Card 5</p>
+                                        </div>
+                                    </div>
+                                    <div class="backViewItem"  id="back_six">
+                                        <div class="item-content">
+                                            <p>Card 6</p>
+                                        </div>
+                                    </div>
+                                    <div class="backViewItem"  id="back_seven">
+                                        <div class="item-content">
+                                            <p>Card 7</p>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="card-editing-area-wrapper-right">
                     <div class="canvas-wrapper" id="front-view">
+                     <!-- <div id='ruler' class='ruler' data-items=''></div> -->
+                     <div class="top_scale"></div>
+                     <div class="left_scale"></div>
                         <canvas id="front"></canvas>
                     </div>
                     <div class="canvas-wrapper" id="back-view" style="display: none;">
+                            <div class="top_scale"></div>
+                            <div class="left_scale"></div>
                         <canvas id="back"></canvas>
                     </div>
+                    <!-- <div class="canvas-wrapper" id="back-view-one" style="display: none;">
+                        <div class="top_scale"></div>
+                        <div class="left_scale"></div>
+                         <canvas id="back-one"></canvas>
+                    </div> -->
                     <div class="canvas-editing-options ui-widget-content" id="textEditOptions">
                         <div class="canvas-editing-options-top">
                             <div class="top-slide-container" id="font-family">
@@ -189,7 +300,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a title="Dublicate" href="javascript: void(0)" class="dublicate-copy">
+                                        <a title="Duplicate" href="javascript: void(0)" class="dublicate-copy">
                                             <i class="fa fa-copy"></i>
                                         </a>
                                     </li>
@@ -221,7 +332,7 @@
                         <div class="top-slide-container" id="replace-object">
                             <div class="card-logo-image">
                                 <input type="file" class="custom-file-input canvas-logo-image" id="fileReplace">
-                                <span class="card-image-text">My Computer</span>
+                                <span class="card-image-text">Upload Image</span>
                             </div>
                         </div>
                         <div class="top-slide-container" id="text-color-image">
@@ -326,12 +437,19 @@
                                 <div class="card-back-output"></div>
                                 <span class="front-back-text">Back Side</span>
                             </div>
+                            <!-- <div id="addmore_backside" class="card-back instant-preview">
+                                <div class="card-back-output"></div>
+                                <span class="front-back-text">Add More Back Side</span>
+                            </div> -->
                         </div>
                         <a href="javascript: void(0)" class="preview-card"><img src="images/preview.png" alt="">
                             Preview</a>
                     </div>
                     <div class="save-btn-wrapper">
                         <a href="javascript: void(0)" class="save-btn save-for-user">Save</a>
+                    </div>
+                    <div class="save-btn-wrapper">
+                        <a href="javascript: void(0)" id="saveBackMore" class="save-back-btn save-for-back">Save Back More</a>
                     </div>
                 </div>
                 <div class="card-preview-display" style="display: none;">
@@ -362,23 +480,54 @@
     <section class="card-design-wrapper for-user-use">
         <div class="container">
             <div class="user-card-editing-area">
-                <a href="javascript: void(0)" class="export-admin-user">Export Admit To User</a>
-                <div class="user-front-card-wrapper">
-                    <h2 style="font-size: 22px;margin-bottom: 30px;font-weight: bold;">Front Side For User</h2>
-                    <div class="user-front-card">
-                        <canvas id="user-front"></canvas>
-                    </div>
+                <div class="export_admin_btn">
+                    <a href="javascript: void(0)" class="export-admin-user">Export Admit To User</a>
+                </div>
+        
+        
+                <div class="user-front-card-wrapper" id="export_front">
                     <div class="front-inputs-ctrl"></div>
                 </div>
-                <div class="user-back-card-wrapper">
-                    <h2 style="font-size: 22px;margin-bottom: 30px;font-weight: bold;">Back Side For User</h2>
-                    <div class="user-back-card">
-                        <canvas id="user-back"></canvas>
-                    </div>
+                <div class="user-back-card-wrapper" id="export_back">
                     <div class="back-inputs-ctrl"></div>
                 </div>
+                <div class="export_section">
+                    <div class="user-front-card-wrapper" id="export_front">
+                        <h2 style="font-size: 22px;margin-bottom: 30px;font-weight: bold;">Front Side For User</h2>
+                        <div class="user-front-card">
+                            <canvas id="user-front-export"></canvas>
+        
+                        </div>
+                        <!-- <div class="front-inputs-ctrl"></div> -->
+                    </div>
+                    <div class="user-back-card-wrapper" id="export_back">
+                        <h2 style="font-size: 22px;margin-bottom: 30px;font-weight: bold;">Back Side For User</h2>
+                        <div class="user-back-card">
+                            <canvas id="user-back-export"></canvas>
+                        </div>
+                        <!-- <div class="back-inputs-ctrl"></div> -->
+                    </div>
+        
+                    <div class="canvas_preview_export">
+                        <div class="card-preview-image">
+                            <div class="card-front-exprt instant-preview-exprt active">
+                                <div class="card-front-output activeClass"></div>
+                                <span class="front-back-text">Front Side</span>
+                            </div>
+                            <div class="card-back-exprt instant-preview-exprt">
+                                <div class="card-back-output"></div>
+                                <span class="front-back-text">Back Side</span>
+                            </div>
+        
+                        </div>
+                        <br class="clearfix" />
+                    </div>
+                </div>
             </div>
-            <a href="javascript: void(0)" class="final-output">Final Out Put</a>
+            <div class="final_out_btn">
+                <a href="javascript: void(0)" class="final-output">Final Out Put</a>
+            </div>
+        
         </div>
     </section>
 
@@ -398,7 +547,7 @@
 
         var canvas, canvasBack, canvasUser, canvasUserBack;
         var mxWidth = 596;
-        var mxHeight = 343;
+        var mxHeight = 357;
         $(".canvas-editing-options").draggable();
         let front = $('#front-view').css('display');
 
@@ -425,6 +574,11 @@
     <script src="js/centering_guidelines.js"></script>
     <script src="js/aligning_guidelines.js"></script>
     <script src="js/user-card.js"></script>
+    <script src="js/export.js"></script>
+    <script src="js/form_validate.js"></script>
+    <script src="js/saveback.js"></script>
+    <!-- <script src="js/back-one"></script>
+    <script src="js/back-one-text.js"></script> -->
 </body>
 
 </html>

@@ -1,7 +1,180 @@
+// delete left script
+
+
+
+
+
+$(document).ready(function () {
+    $('.form_group a').on('click', function (event) {
+        // alert('clicked');
+        var activeObj = canvas.getActiveObject();
+        let frontNew = $('#front-view').css('display');
+        let controlAttrNew = $(this).attr('class');
+        let front = $('#front-view').css('display');
+        let inputCtrlIndex = $(this).parents().parents().index();
+        inputCtrlIndex = inputCtrlIndex - 1;
+        if (front === 'block') {
+            canvas.setActiveObject(canvas._objects[inputCtrlIndex]);
+            canvas.renderAll();
+            if (controlAttrNew === 'remove') {
+                if (frontNew === 'block') {
+                    let activeObjIndex = canvas.getObjects().indexOf(canvas.getActiveObject());
+                    $('.form_group').eq(activeObjIndex).remove();
+                    canvas.remove(canvas.getActiveObject());
+                } else {
+                    let activeObjIndex = canvasBack.getObjects().indexOf(canvasBack.getActiveObject());
+                    $('.form_group').eq(activeObjIndex).remove();
+                    canvasBack.remove(canvasBack.getActiveObject());
+                }
+            }
+        } else {
+            canvasBack.setActiveObject(canvasBack._objects[inputCtrlIndex]);
+            canvasBack.renderAll();
+        }
+
+
+
+        canvas.setActiveObject(activeObj);
+        canvas.renderAll();
+        canvasBack.renderAll();
+
+    });
+})
+
+
+// delete left script end
+
 $(function () {
     let inputVal, inputBox, topVal = 50, newInputVal, newTopVal = 80, rotateVal = 90;
     let activeObj = canvas.getActiveObject();
     let front = $('#front-view').css('display');
+
+    var user_err = false;
+    function _checkForm() {
+        var user_err = false;
+        $(".formcheckID").on('click', function () {
+            console.log('called22')
+
+            if ($(this).is(':checked')) {
+                // alert("checked");
+                console.log('called2')
+
+                user_err = true;
+                _frmValidate();
+                $('.required_error').show();
+            } else {
+                console.log('called1')
+                user_err = true;
+                $('.required_error').hide();
+            }
+        });
+        $('.required_error').hide();
+    }
+    function _frmValidate() {
+
+        var requiredField = $('#require_field').val();
+        var fname_id = $('#require_field_back').val();
+        console.log(user_err, 'user_err')
+
+        if (requiredField.length == '') {
+            $(".required_error").show();
+            $(".required_error").html("**please fill the required field");
+            $(".required_error").focus();
+            $(".required_error").css({
+                color: '#FF0000',
+                marginBottom: '10px',
+                marginTop: '-10px',
+                padding: '0px 0px 5px'
+            })
+            user_err = false;
+            console.log(user_err, 'user_err')
+            return false;
+        } else if (fname_id.length == '') {
+            $(".required_error").show();
+            $(".required_error").html("**please fill the required field");
+            $(".required_error").focus();
+            $(".required_error").css({
+                color: '#FF0000',
+                marginBottom: '10px',
+                marginTop: '-10px',
+                padding: '0px 0px 5px'
+            })
+            console.log(user_err, 'user_err')
+
+            user_err = false;
+            return false;
+        } else if (fname_id.length > 0 || requiredField.length > 0) {
+            $(".required_error").hide();
+            $(".required_error").html("");
+            $("#require_field_back").focus();
+            $("#require_field").focus();
+            console.log(user_err, 'user_err')
+
+            user_err = false;
+            return false;
+        } else {
+            console.log(user_err, 'user_err')
+
+            $('.required_error').hide();
+        }
+
+
+    }
+    function _removeItem() {
+
+        $('.card-editing-area-wrapper .form_group a').on('click', function (event) {
+            // alert('clicked');
+            var activeObj = canvasBack.getActiveObject();
+            let backNew = $('#back-view').css('display');
+            let controlAttrNew = $(this).attr('class');
+            let back = $('#back-view').css('display');
+            let inputCtrlIndex = $(this).parents().parents().index();
+            console.log(inputCtrlIndex);
+            inputCtrlIndex = inputCtrlIndex - 1;
+            if (back === 'block') {
+                canvasBack.setActiveObject(canvasBack._objects[inputCtrlIndex]);
+                canvasBack.renderAll();
+                if (controlAttrNew === 'remove') {
+                    if (backNew === 'block') {
+                        let activeObjIndex = canvasBack.getObjects().indexOf(canvasBack.getActiveObject());
+                        $(this).parents('.add-new-fields').find('.form_group').eq(activeObjIndex).remove();
+                        canvasBack.remove(canvasBack.getActiveObject());
+                        canvas.remove(canvas.getActiveObject());
+                    } else {
+                        let activeObjIndex = canvasBack.getObjects().indexOf(canvasBack.getActiveObject());
+                        $(this).parents('.add-new-fields').find('.form_group').eq(activeObjIndex).remove();
+                        canvasBack.remove(canvasBack.getActiveObject());
+                        canvas.remove(canvas.getActiveObject());
+                    }
+                }
+            } else {
+                canvasBack.setActiveObject(canvasBack._objects[inputCtrlIndex]);
+                canvasBack.renderAll();
+            }
+
+
+
+            canvasBack.setActiveObject(activeObj);
+            canvasBack.renderAll();
+            canvasBack.renderAll();
+
+        });
+    }
+    // localstoare script
+  
+
+
+    // end local scripts
+
+
+
+
+
+
+
+
+
+
     $('.inputs-ctrl').each(function () {
         inputVal = $(this).val();
         inputBox = new fabric.IText(inputVal, {
@@ -27,9 +200,146 @@ $(function () {
             canvasBack.add(inputBox);
         }
     });
+    function _frmValidate() {
 
+        var requiredField = $('#require_field').val();
+        var fname_id = $('#require_field_back').val();
+        console.log(user_err, 'user_err')
+
+        if (requiredField.length == '') {
+            $(".required_error").show();
+            $(".required_error").html("**please fill the required field");
+            $(".required_error").focus();
+            $(".required_error").css({
+                color: '#FF0000',
+                marginBottom: '10px',
+                marginTop: '-10px',
+                padding: '0px 0px 5px'
+            })
+            user_err = false;
+            console.log(user_err, 'user_err')
+            return false;
+        } else if (fname_id.length == '') {
+            $(".required_error").show();
+            $(".required_error").html("**please fill the required field");
+            $(".required_error").focus();
+            $(".required_error").css({
+                color: '#FF0000',
+                marginBottom: '10px',
+                marginTop: '-10px',
+                padding: '0px 0px 5px'
+            })
+            console.log(user_err, 'user_err')
+
+            user_err = false;
+            return false;
+        } else if (fname_id.length > 0 || requiredField.length > 0) {
+            $(".required_error").hide();
+            $(".required_error").html("");
+            $("#require_field_back").focus();
+            $("#require_field").focus();
+            console.log(user_err, 'user_err')
+
+            user_err = false;
+            return false;
+        } else {
+            console.log(user_err, 'user_err')
+
+            $('.required_error').hide();
+        }
+
+
+    }
+    $('.final-output').on('click', function () {
+        $(".formcheckID").on('click', function () {
+            console.log('called22')
+
+            if ($(this).is(':checked')) {
+                // alert("checked");
+                console.log('called2')
+
+                user_err = true;
+                _frmValidate();
+                $('.required_error').show();
+            } else {
+                console.log('called1')
+                user_err = false;
+                $('.required_error').hide();
+            }
+        });
+
+    })
     $('#front-add-field').on('click', function () {
-        $(this).parent('.add-new-fields').append('<textarea class="inputs-ctrl new-added-field front-input">Enter Your Text</textarea>');
+        $(this).parent('.add-new-fields').append('<div class="form_group"><div class="text_field"> <textarea id="fname_id" class="inputs-ctrl" name="comment" required="required">Enter Your Text</textarea></div> <div class="checkbox_wrapper"><input type="checkbox" name="form_validate_field" class="formcheckID" /><label></label>  <a href="javascript: void(0)" class="remove"><img src="images/del.png" style="width:15px;height:20px;background-position: center center" /></a></div></div>');
+        $(".formcheckID").on('click', function () {
+            console.log('called22')
+
+            if ($(this).is(':checked')) {
+                // alert("checked");
+                console.log('called2')
+
+                user_err = true;
+                _frmValidate();
+                $('.required_error').show();
+            } else {
+                console.log('called1')
+                user_err = true;
+                $('.required_error').hide();
+            }
+        });
+
+        function _frmValidate() {
+
+            var requiredField = $('#require_field').val();
+            var fname_id = $('#require_field_back').val();
+            console.log(user_err, 'user_err')
+
+            if (requiredField.length == '') {
+                $(".required_error").show();
+                $(".required_error").html("**please fill the required field");
+                $(".required_error").focus();
+                $(".required_error").css({
+                    color: '#FF0000',
+                    marginBottom: '10px',
+                    marginTop: '-10px',
+                    padding: '0px 0px 5px'
+                })
+                user_err = false;
+                console.log(user_err, 'user_err')
+                return false;
+            } else if (fname_id.length == '') {
+                $(".required_error").show();
+                $(".required_error").html("**please fill the required field");
+                $(".required_error").focus();
+                $(".required_error").css({
+                    color: '#FF0000',
+                    marginBottom: '10px',
+                    marginTop: '-10px',
+                    padding: '0px 0px 5px'
+                })
+                console.log(user_err, 'user_err')
+
+                user_err = false;
+                return false;
+            } else if (fname_id.length > 0 || requiredField.length > 0) {
+                $(".required_error").hide();
+                $(".required_error").html("");
+                $("#require_field_back").focus();
+                $("#require_field").focus();
+                console.log(user_err, 'user_err')
+
+                user_err = false;
+                return false;
+            } else {
+                console.log(user_err, 'user_err')
+
+                $('.required_error').hide();
+            }
+
+
+        }
+
+        // $(this).parent('.add-new-fields').append('<textarea class="inputs-ctrl new-added-field front-input">Enter Your Text</textarea>');
         newInputVal = $('#updateValue').val();
         newInputCtrl = new fabric.IText(newInputVal, {
             left: 250,
@@ -42,7 +352,7 @@ $(function () {
             evented: true,
             noScaleCache: false
         });
-        newTopVal = newTopVal + 40;
+        newTopVal = newTopVal + 5;
         newInputCtrl.set({
             shapeCanvas: 'texts',
             hasRotatingPoint: false
@@ -50,10 +360,113 @@ $(function () {
         canvas.add(newInputCtrl);
         canvas.setActiveObject(newInputCtrl);
         canvas.renderAll();
-    });
+        $('.card-editing-area-wrapper .form_group a').on('click', function (event) {
+            alert('clicked');
+            var activeObj = canvas.getActiveObject();
+            let frontNew = $('#front-view').css('display');
+            let controlAttrNew = $(this).attr('class');
+            let front = $('#front-view').css('display');
+            let inputCtrlIndex = $(this).parents().parents().index();
+            inputCtrlIndex = inputCtrlIndex - 1;
+            if (front === 'block') {
+                canvas.setActiveObject(canvas._objects[inputCtrlIndex]);
+                canvasBack.setActiveObject(canvasBack._objects[inputCtrlIndex]);
+                canvas.renderAll();
+                if (controlAttrNew === 'remove') {
+                    if (frontNew === 'block') {
+                        let activeObjIndex = canvas.getObjects().indexOf(canvas.getActiveObject());
+                        $('.form_group').eq(activeObjIndex).remove();
+                        canvas.remove(canvas.getActiveObject());
+                    } else {
+                        let activeObjIndex = canvasBack.getObjects().indexOf(canvasBack.getActiveObject());
+                        $('.form_group').eq(activeObjIndex).remove();
+                        canvasBack.remove(canvasBack.getActiveObject());
+                    }
+                }
+            } else {
+                canvasBack.setActiveObject(canvasBack._objects[inputCtrlIndex]);
+                canvasBack.renderAll();
+            }
 
+
+
+            canvas.setActiveObject(activeObj);
+            canvas.renderAll();
+            canvasBack.renderAll();
+
+        });
+    });
+let backCounter = 0;
     $('#back-add-field').on('click', function () {
-        $(this).parent('.add-new-fields').append('<textarea class="inputs-ctrl new-added-field back-input">Enter Your Text</textarea>');
+        backCounter++;
+        $(this).parent('.add-new-fields').append('<div class="form_group"><div class="text_field"> <textarea id="fname_id'+backCounter+'" class="inputs-ctrl" name="comment" required="required">Enter Your Text</textarea></div> <div class="checkbox_wrapper"><input type="checkbox" name="form_validate_field" class="formcheckID" /><label></label> <a href="javascript: void(0)" class="remove"><img src="images/del.png" style="width:15px;height:20px;background-position: center center" /></a></div></div>');
+
+        $(".formcheckID").on('click', function () {
+            console.log('called22')
+
+            if ($(this).is(':checked')) {
+                // alert("checked");
+                console.log('called2')
+
+                user_err = true;
+                _frmValidate();
+                $('.required_error').show();
+            } else {
+                console.log('called1')
+                user_err = true;
+                $('.required_error').hide();
+            }
+        });
+        function _frmValidate() {
+
+            var requiredField = $('#require_field').val();
+            var fname_id = $('#require_field_back').val();
+            console.log(user_err, 'user_err')
+
+            if (requiredField.length == '') {
+                $(".required_error").show();
+                $(".required_error").html("**please fill the required field");
+                $(".required_error").focus();
+                $(".required_error").css({
+                    color: '#FF0000',
+                    marginBottom: '10px',
+                    marginTop: '-10px',
+                    padding: '0px 0px 5px'
+                })
+                user_err = false;
+                console.log(user_err, 'user_err')
+                return false;
+            } else if (fname_id.length == '') {
+                $(".required_error").show();
+                $(".required_error").html("**please fill the required field");
+                $(".required_error").focus();
+                $(".required_error").css({
+                    color: '#FF0000',
+                    marginBottom: '10px',
+                    marginTop: '-10px',
+                    padding: '0px 0px 5px'
+                })
+                console.log(user_err, 'user_err')
+
+                user_err = false;
+                return false;
+            } else if (fname_id.length > 0 || requiredField.length > 0) {
+                $(".required_error").hide();
+                $(".required_error").html("");
+                $("#require_field_back").focus();
+                $("#require_field").focus();
+                console.log(user_err, 'user_err')
+
+                user_err = false;
+                return false;
+            } else {
+                console.log(user_err, 'user_err')
+
+                $('.required_error').hide();
+            }
+
+
+        }
         newInputVal = $('#updateValue').val();
         newInputCtrl = new fabric.IText(newInputVal, {
             left: 250,
@@ -66,7 +479,7 @@ $(function () {
             evented: true,
             noScaleCache: false
         });
-        newTopVal = newTopVal + 40;
+        newTopVal = newTopVal + 5;
         newInputCtrl.set({
             shapeCanvas: 'texts',
             hasRotatingPoint: false
@@ -74,11 +487,61 @@ $(function () {
         canvasBack.add(newInputCtrl);
         canvasBack.setActiveObject(newInputCtrl);
         canvasBack.renderAll();
+        $('#require_field_back').keyup(function () {
+            alert($('#require_field_back').val());
+            // $('#require_field_back').each(function() {
+            //     var grade =  $(this).val();
+            //     alert(grade);
+            //   });
+            $.each($('require_field_back'), function () {
+                var txtVal = $(this).val();
+                alert(txtVal);
+            });
+
+            _frmValidate();
+        })
+        $('.card-editing-area-wrapper .form_group a').on('click', function (event) {
+            // alert('clicked');
+            var activeObj = canvasBack.getActiveObject();
+            let backNew = $('#back-view').css('display');
+            let controlAttrNew = $(this).attr('class');
+            let back = $('#back-view').css('display');
+            let inputCtrlIndex = $(this).parents().parents().index();
+            console.log(inputCtrlIndex);
+            inputCtrlIndex = inputCtrlIndex - 1;
+            if (back === 'block') {
+                canvasBack.setActiveObject(canvasBack._objects[inputCtrlIndex]);
+                canvasBack.renderAll();
+                if (controlAttrNew === 'remove') {
+                    if (backNew === 'block') {
+                        let activeObjIndex = canvasBack.getObjects().indexOf(canvasBack.getActiveObject());
+                        $(this).parents('.add-new-fields').find('.form_group').eq(activeObjIndex).remove();
+                        canvasBack.remove(canvasBack.getActiveObject());
+                        canvas.remove(canvas.getActiveObject());
+                    } else {
+                        let activeObjIndex = canvasBack.getObjects().indexOf(canvasBack.getActiveObject());
+                        $(this).parents('.add-new-fields').find('.form_group').eq(activeObjIndex).remove();
+                        canvasBack.remove(canvasBack.getActiveObject());
+                        canvas.remove(canvas.getActiveObject());
+                    }
+                }
+            } else {
+                canvasBack.setActiveObject(canvasBack._objects[inputCtrlIndex]);
+                canvasBack.renderAll();
+            }
+
+
+
+            canvasBack.setActiveObject(activeObj);
+            canvasBack.renderAll();
+            canvasBack.renderAll();
+
+        });
     });
 
     $(document).on('focus', '.inputs-ctrl', function () {
         let front = $('#front-view').css('display');
-        let inputCtrlIndex = $(this).index();
+        let inputCtrlIndex = $(this).parents().parents().index();
         inputCtrlIndex = inputCtrlIndex - 1;
         if (front === 'block') {
             canvas.setActiveObject(canvas._objects[inputCtrlIndex]);
@@ -89,9 +552,10 @@ $(function () {
         }
     });
 
-    $(document).on('keyup', '.inputs-ctrl', function () {
+    $(document).on('keyup', '.add-new-fields .inputs-ctrl', function () {
         let front = $('#front-view').css('display');
         let updatedTextVal = $(this).val();
+        console.log(updatedTextVal);
         if (front === 'block') {
             canvas.getActiveObject().set('text', updatedTextVal);
             $('.inputVal').val(updatedTextVal);
@@ -106,6 +570,7 @@ $(function () {
     $('.inputVal').on('keyup', function () {
         let front = $('#front-view').css('display');
         let updatedTextVal = $(this).val();
+        console.log(updatedTextVal);
         if (front === 'block') {
             canvas.getActiveObject().set('text', updatedTextVal);
             let ActiveObjectIndex = canvas.getObjects().indexOf(canvas.getActiveObject());
@@ -179,6 +644,8 @@ $(function () {
         });
     }
 
+
+
     $('.more-slide ul li a').on('click', function () {
         let front = $('#front-view').css('display');
         let activeObj = canvas.getActiveObject();
@@ -230,11 +697,13 @@ $(function () {
         } else if (controlAttr === 'delete-object') {
             if (front === 'block') {
                 let activeObjIndex = canvas.getObjects().indexOf(canvas.getActiveObject());
-                $('.inputs-ctrl').eq(activeObjIndex).remove();
+                // $('.inputs-ctrl').eq(activeObjIndex).remove();
+                $('.form_group').eq(activeObjIndex).remove();
                 canvas.remove(canvas.getActiveObject());
             } else {
                 let activeObjIndex = canvasBack.getObjects().indexOf(canvasBack.getActiveObject());
-                $('.inputs-ctrl').eq(activeObjIndex).remove();
+                // $('.inputs-ctrl').eq(activeObjIndex).remove();
+                $('.form_group').eq(activeObjIndex).remove();
                 canvasBack.remove(canvasBack.getActiveObject());
             }
         } else if (controlAttr === 'align-left') {
@@ -554,3 +1023,7 @@ $(function () {
         }
     });
 });
+
+
+
+
